@@ -1,38 +1,59 @@
 <script setup>
-// let time = "8.00pm"
+import { RouterLink, RouterView } from "vue-router";
+
+import { ref } from "vue";
 
 let timetable = [
   {
     period:"Morning",
-    time: "8:00"
+    time: "8:00 a.m"
   },
   {
     period:"Noon",
-    time: "12:00"
+    time: "12:00 p.m"
   },
   {
     period:"Afternoon",
-    time: "2:00"
+    time: "2:00 p.m"
   },
   {
     period:"Evening",
-    time: "6:00"
+    time: "6:00 p.m"
   }
 ]
+
+let show = ref(false)
+
+function showTimetable() {
+  show.value = true
+}
 </script>
 
 <template>
+  <nav>
+    <di>
+      <RouterLink to="/">Home Page</RouterLink>
+      <RouterLink to="/landing">Landing Page</RouterLink>
+    </di>
+  </nav>
+
   <main>
     <h1>Welcome to Vue</h1>
 
-    <div v-for="i in timetable" :key="i">
-      <div class="grid">
+    <div class="grid" v-if="show===true">
+      <div v-for="i in timetable" :key="i">
         <p>{{ i.period }}</p>
         <p>{{ i.time }}</p>
-      </div>
+    </div>
+    </div>
+    <div v-else>
+      <p>No timetable</p>
     </div>
 
-    <div class="grid">
+    <!-- <p v-if="show===false">0708xxxx36</p>
+    <p v-else>0708905136</p> -->
+
+    <!-- <div class="grid">
       <div>
         <p>Morning</p>
       </div>
@@ -45,18 +66,35 @@ let timetable = [
       <div>
         <p>Evening</p>
       </div>
-    </div>
+    </div> -->
+
+    <button class="btn" @click="showTimetable">Click to view timetable</button>
   </main>
+  <RouterView/>
 </template>
 
 <style scoped>
+  h1{
+    color: red;
+  }
+  p{
+    font-size: 18px;
+  }
   .grid{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    gap: 20px;
+    font-size: 18px;
   }
-  .grid div {
-    border: 1px solid black;
-    padding: 10px;
+  .btn {
+    display: flex;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    margin-top: 10px;
+    font-size: 18px;
+    cursor: pointer;
   }
 </style>
