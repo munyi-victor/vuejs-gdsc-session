@@ -1,9 +1,9 @@
-<script setup>
-import TheWelcome from '../components/TheWelcome.vue'
-</script>
-
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <h1>Home</h1>
 </template>
+
+<style scoped>
+  h1{
+    color: red;
+  }
+</style>
