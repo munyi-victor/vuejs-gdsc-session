@@ -1,6 +1,16 @@
 <script setup>
-function handleSubmit() {
-  
+import { ref } from 'vue';
+
+let name = ref("");
+let password = ref("")
+
+async function handleSubmit(event) {
+  try {
+    event.preventDefault();
+    alert(`Name is ${name.value}, passowrd is ${password.value}`)
+  } catch (error) {
+    alert(error)
+  }
 }
 </script>
 
@@ -10,12 +20,12 @@ function handleSubmit() {
       <form class="form" @submit="handleSubmit">
         <div>
           <label>Name:</label>
-          <input type="text" placeholder="Enter name" required/>
+          <input type="text" v-model="name" placeholder="Enter name" required/>
         </div>
 
         <div>
           <label>Password:</label>
-          <input type="password" placeholder="Enter password" required/>
+          <input type="password" v-model="password" placeholder="Enter password" required/>
         </div>
 
         <button type="submit" class="btn">Submit</button>
