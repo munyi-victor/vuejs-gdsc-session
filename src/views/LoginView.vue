@@ -1,16 +1,14 @@
 <script setup>
 import { ref } from 'vue'
 
-let name = ref('')
 let email = ref("")
 let password = ref('')
 
 async function handleSubmit(event) {
   try {
     event.preventDefault()
-    alert(`Name is ${name.value}, email is ${email.value} and passowrd is ${password.value}`)
+    alert(`Email is ${email.value} and passowrd is ${password.value}`)
 
-    name.value = ''
     email.value = ""
     password.value = ''
   } catch (error) {
@@ -23,13 +21,8 @@ async function handleSubmit(event) {
   <main>
     <div>
       <form class="form" @submit="handleSubmit">
-        <div style="text-align: center">
-          <h2>Register now</h2>
-        </div>
-
-        <div>
-          <label>Name:</label>
-          <input type="text" v-model="name" placeholder="Enter name" required />
+        <div style="text-align: center; margin-bottom: 20px;">
+          <h2>Login</h2>
         </div>
 
         <div>
@@ -42,11 +35,11 @@ async function handleSubmit(event) {
           <input type="password" v-model="password" placeholder="Enter password" required />
         </div>
 
-        <button type="submit" class="btn">Register</button>
+        <button type="submit" class="btn">Login</button>
 
         <div>
-          <p style="font-size: 18px">
-            Alredy have an account? <RouterLink to="/login">Login</RouterLink>
+          <p style="font-size: 18px; margin-left: 8px; margin-top: 20px;">
+            Don't have an account? <RouterLink to="/register">Login</RouterLink>
           </p>
         </div>
       </form>
