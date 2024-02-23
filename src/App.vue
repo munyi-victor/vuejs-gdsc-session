@@ -94,7 +94,7 @@ function closeMenu() {
   }
 
   @media screen and (max-width:760px) {
-    .nav{
+    .nav1{
       justify-content: space-between;
       max-width: 100%;
     }

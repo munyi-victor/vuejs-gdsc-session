@@ -1,16 +1,28 @@
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
+import { useToast } from 'vue-toast-notification';
+import router from '@/router';
 
-let email = ref("")
-let password = ref('')
+const email = ref("")
+const password = ref('')
+
+const toast = useToast();
 
 async function handleSubmit(event) {
   try {
     event.preventDefault()
-    alert(`Email is ${email.value} and passowrd is ${password.value}`)
 
-    email.value = ""
-    password.value = ''
+    if (password.value.length < 8) {
+      toast.info("Password must be atleast 8 characters", {
+        duration: 3000,
+        position:'top-right'
+      })
+    } else {
+      router.push("/");
+
+      email.value = ""
+      password.value = ''
+    }
   } catch (error) {
     alert(error)
   }
@@ -18,7 +30,7 @@ async function handleSubmit(event) {
 </script>
 
 <template>
-  <main>
+  <main class="container">
     <div>
       <form class="form" @submit="handleSubmit">
         <div style="text-align: center; margin-bottom: 20px;">
@@ -27,19 +39,19 @@ async function handleSubmit(event) {
 
         <div>
           <label>Email:</label>
-          <input type="email" v-model="email" placeholder="Enter email" required />
+          <input type="email" v-model="email" id="email" placeholder="Enter email" required />
         </div>
 
         <div>
           <label>Password:</label>
-          <input type="password" v-model="password" placeholder="Enter password" required />
+          <input type="password" v-model="password" id="password" placeholder="Enter password" required />
         </div>
 
         <button type="submit" class="btn">Login</button>
 
         <div>
           <p style="font-size: 18px; margin-left: 8px; margin-top: 20px;">
-            Don't have an account? <RouterLink to="/register">Login</RouterLink>
+            Don't have an account? <RouterLink to="/register">Register</RouterLink>
           </p>
         </div>
       </form>

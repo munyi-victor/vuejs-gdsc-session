@@ -1,18 +1,42 @@
 <script setup>
 import { ref } from 'vue'
+import { useToast } from 'vue-toast-notification';
+import router from '@/router';
 
-let name = ref('')
-let email = ref("")
-let password = ref('')
+const toast = useToast();
+
+const name = ref('')
+const email = ref("")
+const password = ref('')
+const confirm = ref('')
 
 async function handleSubmit(event) {
   try {
     event.preventDefault()
-    alert(`Name is ${name.value}, email is ${email.value} and passowrd is ${password.value}`)
 
-    name.value = ''
-    email.value = ""
-    password.value = ''
+    if (name.value < 4 || password.value < 8) {
+      toast.info("Please enter the details as required", {
+        duration: 3000,
+        position:"top-left"
+      })
+    } else if (confirm.value !== password.value) {
+      toast.info("Confirm password must match password", {
+        duration: 3000,
+        position:"top-left"
+      })
+    } else {
+      toast.info("Account created successfully!", {
+        duration: 3000,
+        position:"top-left"
+      })
+
+      router.push("/");
+
+      name.value = ''
+      email.value = ""
+      password.value = ''
+      confirm.value = ""
+    }
   } catch (error) {
     alert(error)
   }
@@ -42,6 +66,11 @@ async function handleSubmit(event) {
           <input type="password" v-model="password" placeholder="Enter password" required />
         </div>
 
+        <div>
+          <label>Confirm password:</label>
+          <input type="password" v-model="confirm" id="confirm" placeholder="Confirm password" required />
+        </div>
+
         <button type="submit" class="btn">Register</button>
 
         <div>
@@ -66,7 +95,7 @@ async function handleSubmit(event) {
   padding: 20px;
   margin: 0 30vw;
   margin-top: 10vh;
-  height: 70vh;
+  height: 75vh;
   background-color: #eee;
 }
 .form div {

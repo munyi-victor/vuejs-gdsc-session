@@ -31,7 +31,7 @@ function showTimetable() {
   <main>
     <h1>Welcome to Vue</h1>
 
-    <div class="grid" v-if="show===true">
+    <div class="gridDisp" v-if="show===true">
       <div v-for="i in timetable" :key="i">
         <p>{{ i.period }}</p>
         <p>{{ i.time }}</p>
@@ -59,7 +59,11 @@ function showTimetable() {
       </div>
     </div> -->
 
-    <button class="btn" @click="showTimetable">Click to view timetable</button>
+    <button class="button" @click="showTimetable">Click to view timetable</button>
+
+    <div>
+      <button class="button">Primary Button</button>
+    </div>
   </main>
 </template>
 
@@ -71,14 +75,13 @@ function showTimetable() {
   p{
     font-size: 18px;
   }
-  .grid{
+  .gridDisp{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     font-size: 18px;
   }
-  .btn {
-    display: flex;
+  .button {
     padding: 10px 20px;
     border: none;
     border-radius: 10px;
