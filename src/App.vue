@@ -53,7 +53,7 @@ function closeMenu() {
     top: 0;
     position: relative;
     display: flex;
-    background-color: crimson;
+    background-color: #000;
     width: 100%;
     height: 8vh;
     padding: 12px 80px;
@@ -68,10 +68,10 @@ function closeMenu() {
   }
 
   .logo {
-    color: black;
+    color: white;
     background: transparent;
     text-decoration: none;
-    font-size: 22px;
+    font-size: 28px;
     font-weight: bold;
   }
 
@@ -97,6 +97,7 @@ function closeMenu() {
     font-weight: bold;
     cursor: pointer;
     display: none;
+    color: #fff;
   }
 
   @media screen and (max-width:760px) {
@@ -120,7 +121,8 @@ function closeMenu() {
       right: 0;
       height: 50vh;
       padding-top: 20px;
-      background-color: crimson;
+      background: #333;
+      z-index: 1;
       transition: right 0.5s ease-in-out;
     }
 

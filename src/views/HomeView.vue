@@ -1,94 +1,85 @@
 <script setup>
-import { ref } from "vue";
-
-let timetable = [
-  {
-    period:"Morning",
-    time: "8:00 a.m"
-  },
-  {
-    period:"Noon",
-    time: "12:00 p.m"
-  },
-  {
-    period:"Afternoon",
-    time: "2:00 p.m"
-  },
-  {
-    period:"Evening",
-    time: "6:00 p.m"
-  }
-]
-
-let show = ref(false)
-
-function showTimetable() {
-  show.value = true
-}
+import router from '@/router';
 </script>
 
 <template>
-  <main>
-    <h1>Welcome to Vue</h1>
-
-    <div class="gridDisp" v-if="show===true">
-      <div v-for="i in timetable" :key="i">
-        <p>{{ i.period }}</p>
-        <p>{{ i.time }}</p>
-    </div>
-    </div>
-    <div v-else>
-      <p>No timetable</p>
+  <div class="home-conainer">
+    <div style="margin-top: 20px;">
+      <h1>Welcome to DigiVote</h1>
+      <p>Your vote, your voice.</p>
     </div>
 
-    <!-- <p v-if="show===false">0708xxxx36</p>
-    <p v-else>0708905136</p> -->
+    <div class="overview-container">
+      <div class="overview">
+        <h3>Register</h3>
+        <p>
+          To vote you have to register with us first as a voter. Enter correct details during registration. There is no one who is allowed to vote when they not registered. One can only have one account and vote only once.
+        </p>
+      </div>
 
-    <!-- <div class="grid">
-      <div>
-        <p>Morning</p>
+      <div class="overview">
+        <h3>Candidate</h3>
+        <p>
+          If you want to vie, create an account and register as a candidate. After passing the requirements for candidate eligibility, your name will be put on candidates list.
+        </p>
       </div>
-      <div>
-        <p>Noon</p>
-      </div>
-      <div>
-        <p>Afternoon</p>
-      </div>
-      <div>
-        <p>Evening</p>
-      </div>
-    </div> -->
 
-    <button class="button" @click="showTimetable">Click to view timetable</button>
+      <div class="overview">
+        <h3>Voting process</h3>
+        <p>
+          After confirming all registered candidates, the platform will produce a simple interface where all voters can vote for teir preferred candidates. 
+        </p>
+      </div>
 
-    <div>
-      <button class="button">Primary Button</button>
+      <div class="overview">
+        <h3>Votes tally</h3>
+        <p>After voting exercise, tallying will be done automatically and realtime results will be displayed on the system. All registered voters will be able to track their candidates' position.</p>
+      </div>
+
+      <div class="overview">
+        <h3>Accuracy</h3>
+        <p>
+          And since tallying is done automatically, we guarantee a 100% accuracy on our tally and results. In case of anything, the servers will be opened to track the votes.
+        </p>
+      </div>
+
+      <div>
+        <button class="btn" @click="router.push('/login')">Begin now</button>
+      </div>
     </div>
-  </main>
+  </div>
 </template>
 
 
 <style scoped>
-  h1{
-    color: red;
-  }
-  p{
-    font-size: 18px;
-  }
-  .gridDisp{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    font-size: 18px;
-  }
-  .button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 10px;
-    background-color: black;
-    color: white;
-    margin-top: 10px;
-    font-size: 18px;
-    cursor: pointer;
-  }
+.home-conainer{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  background: #fffdff;
+}
+
+.overview-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 4vh 25vw;
+}
+
+.overview {
+  background: rgba(255, 255, 255, 0.1);
+  width: 50vw;
+  height: 40vh;
+  text-align: left;
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.overview p {
+  margin-top: 10px;
+}
 </style>

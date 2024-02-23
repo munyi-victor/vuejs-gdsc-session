@@ -18,7 +18,7 @@ async function handleSubmit(event) {
         position:'top-right'
       })
     } else {
-      router.push("/");
+      router.push("/dashboard");
 
       email.value = ""
       password.value = ''
@@ -88,22 +88,6 @@ async function handleSubmit(event) {
   border-radius: 10px;
   font-size: 18px;
   background-color: #fff;
-}
-.btn {
-  display: flex;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 15px;
-  background-color: #000;
-  color: #fff;
-  margin-top: 10px;
-  font-size: 18px;
-  cursor: pointer;
-  justify-content: center;
-  text-align: center;
-}
-.btn:hover {
-  background-color: #333;
 }
 
 @media screen and (max-width: 760px) {
