@@ -2,18 +2,24 @@
 import { RouterLink, RouterView } from "vue-router";
 import { ref } from "vue";
 
+const isSmallScreen = ref(false);
+
 const menuRef = ref(null);
 
 function openMenu() {
   if (menuRef.value.style.display === "none") {
-    menuRef.value.style.display = "flex";
-  } else {
-    menuRef.value.style.display = "none"
-  }
+      menuRef.value.style.display = "flex";
+    } else {
+      menuRef.value.style.display = "none"
+    }
 }
 
 function closeMenu() {
-  menuRef.value.style.display = "none"
+  isSmallScreen.value = window.innerWidth < 760;
+
+  if (isSmallScreen.value) {
+    menuRef.value.style.display = "none"
+  }
 }
 </script>
 
