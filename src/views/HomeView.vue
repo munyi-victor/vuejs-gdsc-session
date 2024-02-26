@@ -6,7 +6,7 @@ import router from '@/router';
   <div class="home-conainer">
     <div style="margin-top: 20px;">
       <h1>Welcome to DigiVote</h1>
-      <p>Your vote, your voice.</p>
+      <p style="font-size: 18px;">Your vote, your voice.</p>
     </div>
 
     <div class="overview-container">
@@ -74,7 +74,7 @@ import router from '@/router';
   height: 40vh;
   text-align: left;
   backdrop-filter: blur(10px);
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 6px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   padding: 20px;
 }

@@ -19,8 +19,8 @@ const router = createRouter({
       component: LandingView
     },
     {
-      path: '/register',
-      name: 'register page',
+      path: '/create-accout',
+      name: 'registration page',
       component: RegisterView
     },
     {

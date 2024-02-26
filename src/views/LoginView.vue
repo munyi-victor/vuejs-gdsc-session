@@ -3,6 +3,8 @@ import { ref } from 'vue';
 import { useToast } from 'vue-toast-notification';
 import router from '@/router';
 
+import store from '@/store'
+
 const email = ref("")
 const password = ref('')
 
@@ -19,6 +21,8 @@ async function handleSubmit(event) {
       })
     } else {
       router.push("/dashboard");
+
+      store.commit('setIsLoggedIn', true);
 
       email.value = ""
       password.value = ''
@@ -51,7 +55,7 @@ async function handleSubmit(event) {
 
         <div>
           <p style="font-size: 18px; margin-left: 8px; margin-top: 20px;">
-            Don't have an account? <RouterLink to="/register">Register</RouterLink>
+            Don't have an account? <RouterLink to="/create-accout">Create Accout</RouterLink>
           </p>
         </div>
       </form>

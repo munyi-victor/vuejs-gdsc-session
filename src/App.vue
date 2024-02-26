@@ -1,10 +1,19 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
 import { ref } from "vue";
+// import store from "./store";
+// import router from "./router";
 
 const isSmallScreen = ref(false);
 
 const menuRef = ref(null);
+
+// const isLoggedIn = ref(store.state.isLoggedIn);
+
+// const route = useRoute();
+// route.afterEach(() => {
+//   isLoggedIn.value = store.state.isLoggedIn;
+// })
 
 function openMenu() {
   if (menuRef.value.style.display === "none") {
@@ -27,22 +36,25 @@ function closeMenu() {
   <nav class="nav">
     <div class="men">
       <div class="main-logo" style="background: transparent;">
-      <RouterLink to="/" class="logo" @click="closeMenu">DigiVote</RouterLink>
-    </div>
+        <RouterLink to="/" class="logo" @click="closeMenu">DigiVote</RouterLink>
+      </div>
+
       <span class="open" @click="openMenu()">&#9776;</span>
     </div>
 
     <div class="link-container" ref="menuRef">      
       <div class="nav-links">
         <RouterLink to="/" class="link" @click="closeMenu">Home</RouterLink>
-        <RouterLink to="/landing" class="link" @click="closeMenu">Landing</RouterLink>
-        <RouterLink to="/contact" class="link" @click="closeMenu">Contact</RouterLink>
+        <RouterLink to="/dashboard" class="link" @click="closeMenu">Dashboard</RouterLink>
       </div>
 
       <div class="auth-links">
         <RouterLink to="/login" class="link" @click="closeMenu">Login</RouterLink>
-        <RouterLink to="/register" class="link" @click="closeMenu">Register</RouterLink>
+        <RouterLink to="/create-accout" class="link" @click="closeMenu">Create Accout</RouterLink>
       </div>
+      <!-- <div class="auth-links">
+        <RouterLink to="/" class="link" @click="closeMenu">Logout</RouterLink>
+      </div> -->
     </div>
   </nav>
   <RouterView/>
@@ -53,7 +65,7 @@ function closeMenu() {
     top: 0;
     position: relative;
     display: flex;
-    background-color: #000;
+    background-color: crimson;
     width: 100%;
     height: 8vh;
     padding: 12px 80px;
@@ -121,7 +133,7 @@ function closeMenu() {
       right: 0;
       height: 50vh;
       padding-top: 20px;
-      background: #333;
+      background: crimson;
       z-index: 1;
       transition: right 0.5s ease-in-out;
     }
