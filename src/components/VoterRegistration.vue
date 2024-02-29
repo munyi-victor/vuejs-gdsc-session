@@ -2,6 +2,11 @@
 // import ToastMessage from './ToastMessage.vue';
 import { ref } from 'vue';
 
+let name = ref();
+let admno = ref();
+let year = ref();
+let sch = ref();
+
 let isRegistered = ref(false)
 
 const handleSubmit = () => {
@@ -21,21 +26,32 @@ const handleSubmit = () => {
 </script>
 
 <template>
-  <div class="formCont">
+    <div v-if="isRegistered === true" style="margin: 10px 30vw;">
+    <h1>Your details</h1>
+
+    <div class="voter-details">
+      <p>Name: {{ name.value }}</p>
+      <p>Adm no.: {{ admno.value }}</p>
+      <p>Year: {{ year.value }}</p>
+      <p>School: {{ sch.value }}</p>
+    </div>
+  </div>
+
+  <div class="formCont" v-else>
     <form @submit="handleSubmit">
       <label for="name">Name</label>
-      <input type="text" placeholder="name" required>
+      <input type="text" placeholder="name" v-model="name" required>
       <label for="adm no.">Admission number:</label>
-      <input type="text" placeholder="admission number" :maxlength="14" required>
+      <input type="text" placeholder="admission number" v-model="admno" :maxlength="14" required>
       <label for="year">Year:</label>
-      <select required>
+      <select v-model="year" required>
         <option value="Year 1">Year 1</option>
         <option value="Year 2">Year 2</option>
         <option value="Year 3">Year 3</option>
         <option value="Year 4">Year 4</option>
       </select>
       <label for="school">School:</label>
-      <select required>
+      <select v-model="sch" required>
         <option value="SOE">SOE</option>
         <option value="SASSB">SASSB</option>
         <option value="SSAES">SSAES</option>
@@ -69,5 +85,9 @@ form input, form select {
   padding: 4px 8px;
   font-size: 16px;
   height: 36px;
+}
+
+.voter-details {
+  text-align: left;
 }
 </style>
