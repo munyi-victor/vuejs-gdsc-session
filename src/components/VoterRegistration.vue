@@ -2,17 +2,15 @@
 // import ToastMessage from './ToastMessage.vue';
 import { ref } from 'vue';
 
-let name = ref();
-let admno = ref();
-let year = ref();
-let sch = ref();
+let name = ref("");
+let admno = ref("");
+let year = ref("");
+let sch = ref("");
 
-let isRegistered = ref(false)
+let isRegistered = false;
 
 const handleSubmit = () => {
-  if (isRegistered.value === false) {
-    isRegistered.value = true;
-  }
+  isRegistered.value = true;
 }
 
 // export default {
@@ -30,10 +28,10 @@ const handleSubmit = () => {
     <h1>Your details</h1>
 
     <div class="voter-details">
-      <p>Name: {{ name.value }}</p>
-      <p>Adm no.: {{ admno.value }}</p>
-      <p>Year: {{ year.value }}</p>
-      <p>School: {{ sch.value }}</p>
+      <p>Name: {{ name }}</p>
+      <p>Adm no.: {{ admno }}</p>
+      <p>Year: {{ year }}</p>
+      <p>School: {{ sch }}</p>
     </div>
   </div>
 
